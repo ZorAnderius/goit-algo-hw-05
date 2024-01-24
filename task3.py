@@ -61,21 +61,21 @@ def task3():
     create_row(kmp_search, results, file_1, [short_pattern_1, middle_pattern_1, long_pattern_1])
     create_row(rabin_karp_search, results, file_1, [short_pattern_1, middle_pattern_1, long_pattern_1])
 
-    console.print(build_comparison_table(results, 'Searching time comparison table for first file'))
+    console.print(build_comparison_table(results, 'Table 1 - Searching time comparison table for first file'))
     
     results_2 = []
     create_row(boyer_moore_search, results_2, file_2, [short_pattern_2, middle_pattern_2, long_pattern_2])
     create_row(kmp_search, results_2, file_2, [short_pattern_2, middle_pattern_2, long_pattern_2])
     create_row(rabin_karp_search, results_2, file_2, [short_pattern_2, middle_pattern_2, long_pattern_2])
 
-    console.print(build_comparison_table(results_2, 'Searching time comparison table for second file'))
+    console.print(build_comparison_table(results_2, 'Table 2 - Searching time comparison table for second file'))
     
     results_fake = []
     create_row(boyer_moore_search, results_fake, file_2, [fake_pattern_short, fake_pattern_middle, fake_pattern_long])
     create_row(kmp_search, results_fake, file_2, [fake_pattern_short, fake_pattern_middle, fake_pattern_long])
     create_row(rabin_karp_search, results_fake, file_2,[fake_pattern_short, fake_pattern_middle, fake_pattern_long])
 
-    console.print(build_comparison_table(results_fake, 'Searching time comparison table for second file with fake pattern'))
+    console.print(build_comparison_table(results_fake, 'Table 3 - Searching time comparison table for second file with fake pattern'))
 
 if __name__ == '__main__':
     task3()
