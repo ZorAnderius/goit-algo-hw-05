@@ -7,12 +7,6 @@ from rich.console import Console
 from kmp_search import kmp_search
 from boyer_moore_search import boyer_moore_search
 from rabin_karp_search import rabin_karp_search
-
-def position(index: int) -> None:
-    if index != -1:
-        print(f"Substring found at index {index}")
-    else:
-        print("Substring not found")
         
 def read_file(filename):
     with open(filename, 'r', encoding='cp1251') as f:
@@ -24,8 +18,8 @@ def execution_time(func: Callable, text_: str, pattern_: str):
     stmt = f"{func.__name__}(text, pattern)"
     return timeit(stmt=stmt, setup=setup_code, globals={'text': text_, 'pattern': pattern_}, number=10)
 
-def build_comparison_table(data: list) -> Table:
-    table = Table(title="Searching time comparison table",style="blue", show_lines=True)
+def build_comparison_table(data: list, title) -> Table:
+    table = Table(title=title, style="blue", show_lines=True)
 
     table.add_column("Algorithm", justify="center", style="green",min_width=20, no_wrap=True)
     table.add_column("Time,s (short str)", style="yellow", justify="center", max_width=35, no_wrap=False)
@@ -67,21 +61,21 @@ def task3():
     create_row(kmp_search, results, file_1, [short_pattern_1, middle_pattern_1, long_pattern_1])
     create_row(rabin_karp_search, results, file_1, [short_pattern_1, middle_pattern_1, long_pattern_1])
 
-    console.print(build_comparison_table(results))
+    console.print(build_comparison_table(results, 'Searching time comparison table for first file'))
     
     results_2 = []
     create_row(boyer_moore_search, results_2, file_2, [short_pattern_2, middle_pattern_2, long_pattern_2])
     create_row(kmp_search, results_2, file_2, [short_pattern_2, middle_pattern_2, long_pattern_2])
     create_row(rabin_karp_search, results_2, file_2, [short_pattern_2, middle_pattern_2, long_pattern_2])
 
-    console.print(build_comparison_table(results_2))
+    console.print(build_comparison_table(results_2, 'Searching time comparison table for second file'))
     
     results_fake = []
     create_row(boyer_moore_search, results_fake, file_2, [fake_pattern_short, fake_pattern_middle, fake_pattern_long])
     create_row(kmp_search, results_fake, file_2, [fake_pattern_short, fake_pattern_middle, fake_pattern_long])
     create_row(rabin_karp_search, results_fake, file_2,[fake_pattern_short, fake_pattern_middle, fake_pattern_long])
 
-    console.print(build_comparison_table(results_fake))
+    console.print(build_comparison_table(results_fake, 'Searching time comparison table for second file with fake pattern'))
 
 if __name__ == '__main__':
     task3()
